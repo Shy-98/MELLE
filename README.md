@@ -211,11 +211,11 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 torchrun \
 If you use this implementation in your research, please cite the original paper:
 
 ```bibtex
-@article{melle2022,
-  title={Autoregressive Speech Synthesis without Vector Quantization},
-  author={[Authors]},
-  journal={arXiv preprint arXiv:2209.12888},
-  year={2022}
+@article{meng2024autoregressive,
+  title={Autoregressive speech synthesis without vector quantization},
+  author={Meng, Lingwei and Zhou, Long and Liu, Shujie and Chen, Sanyuan and Han, Bing and Hu, Shujie and Liu, Yanqing and Li, Jinyu and Zhao, Sheng and Wu, Xixin and others},
+  journal={arXiv preprint arXiv:2407.08551},
+  year={2024}
 }
 ```
 
