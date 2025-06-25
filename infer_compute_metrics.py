@@ -1,7 +1,4 @@
 import os
-# os.environ["https_proxy"] = "http://10.233.84.125:3128"
-# os.environ["http_proxy"] = "http://10.233.84.125:3128"
-# os.environ["no_proxy"] = "localhost,127.0.0.1,::1"
 import json
 import torch
 import torchaudio
@@ -11,7 +8,7 @@ from modules.asv_scripts.verification import init_model as init_asv_model
 
 from transformers import Wav2Vec2Processor, HubertForCTC
 
-test_ckpt_path = 'librispeech_exp/melle_vad_flux_0.1_bce20/step_400000.pt'
+test_ckpt_path = 'librispeech_exp/melle/step_400000.pt'
 
 prompt_save_dir = test_ckpt_path.replace('.pt','testclean_prompt_samples')
 generate_save_dir = test_ckpt_path.replace('.pt','testclean_generate_samples')

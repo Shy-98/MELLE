@@ -163,9 +163,10 @@ class MELLE(nn.Module):
         stop_choice = mel_mask.unsqueeze(-1)
         stop_target = (~target_choice).type_as(stop_logits).masked_select(stop_choice).view(-1)
         stop_logits = stop_logits.masked_select(stop_choice).view(-1)
-        loss_bce = F.binary_cross_entropy_with_logits(stop_logits, stop_target, pos_weight=torch.tensor(20.0), reduction='sum')
+        loss_bce = F.binary_cross_entropy_with_logits(stop_logits, stop_target, pos_weight=torch.tensor(100.0), reduction='sum')
 
-        loss = loss_l1 + loss_l2 + 5e-2 * loss_logvar - 0.5 * spec_flux_for_loss + loss_bce
+        # loss = loss_l1 + loss_l2 + 5e-2 * loss_logvar - 0.5 * spec_flux_for_loss + loss_bce
+        loss = loss_l1 + loss_l2 + 5e-2 * loss_logvar - 1.0 * spec_flux_for_loss + loss_bce
 
         return loss, loss_l1, loss_l2, loss_logvar, loss_bce
     

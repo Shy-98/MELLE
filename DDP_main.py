@@ -15,9 +15,9 @@ def main():
     parser = argparse.ArgumentParser(description="TTS Model Training")
     parser.add_argument("--train_json", type=str, default='data/librispeech_train960.jsonl')
     parser.add_argument("--batch_frames", type=int, default=2000)
-    parser.add_argument("--data_buffer_size", type=int, default=3000)
+    parser.add_argument("--data_buffer_size", type=int, default=1000)
 
-    parser.add_argument("--lr", type=float, default=0.0005)
+    parser.add_argument("--lr", type=float, default=5e-4)
     parser.add_argument("--epochs", type=int, default=100)
     parser.add_argument("--start_epoch", type=int, default=1)
     parser.add_argument("--max_update_step", type=int, default=400000)
@@ -122,7 +122,7 @@ def main():
     train_loader = DataLoader(
         train_dataset,
         batch_size=None,
-        num_workers=4,
+        num_workers=1,
         pin_memory=True,
         persistent_workers=False,
         

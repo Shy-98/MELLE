@@ -52,5 +52,3 @@ txt_lengths = torch.tensor(txt.shape[1]).long().reshape(1).to(device)
 outputs = model.inference(prompt_mel, txt, max_length=2000)
 np.save('test_infer.npy', outputs[0].cpu().numpy())
 np.save('test_prompt.npy', prompt_mel[0].cpu().numpy())
-# os.system('cd /root/epfs/data/shy_data/MELLE/ParallelWaveGAN && CUDA_VISIBLE_DEVICES=0 python parallel_wavegan/bin/decode.py --checkpoint checkpoint/hifigan-libritts-1930000steps.pkl --scp /root/epfs/data/shy_data/MELLE/feats.scp --outdir /root/epfs/data/shy_data/2025/MELLE --normalize-before')
-# cd /root/epfs/data/shy_data/MELLE/ParallelWaveGAN && CUDA_VISIBLE_DEVICES=0 python parallel_wavegan/bin/decode.py --checkpoint checkpoint/hifigan-libritts-1930000steps.pkl --scp /root/epfs/data/shy_data/MELLE/feats.scp --outdir /root/epfs/data/shy_data/2025/MELLE --normalize-before

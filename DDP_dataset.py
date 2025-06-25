@@ -63,14 +63,14 @@ class DynamicBatchingDataset(IterableDataset):
             return None
         try:
             '''feat: torch.tensor format'''
-            feat_save_path = item[self.audio_key].replace('/root/epfs/data/LibriSpeech', '/root/epfs/data/shy_data/2025/MELLE/data/features').replace('.flac', '.pt')
-            if not os.path.exists(feat_save_path):
-                feat = get_fbank_from_wav(item[self.audio_key], self.vad_splitter).T.unsqueeze(0)
-                os.makedirs(os.path.dirname(feat_save_path), exist_ok=True)
-                torch.save(feat, feat_save_path)
-            else:
-                feat = torch.load(feat_save_path)
-            
+            # feat_save_path = item[self.audio_key].replace('/root/epfs/data/LibriSpeech', '/root/epfs/data/shy_data/2025/MELLE/data/features').replace('.flac', '.pt')
+            # if not os.path.exists(feat_save_path):
+            #     feat = get_fbank_from_wav(item[self.audio_key], self.vad_splitter).T.unsqueeze(0)
+            #     os.makedirs(os.path.dirname(feat_save_path), exist_ok=True)
+            #     torch.save(feat, feat_save_path)
+            # else:
+            #     feat = torch.load(feat_save_path)
+            feat = get_fbank_from_wav(item[self.audio_key], self.vad_splitter).T.unsqueeze(0)
             feat_len = feat.shape[2]
 
             if isinstance(self.text_tokenizer, LlamaTokenizerFast):

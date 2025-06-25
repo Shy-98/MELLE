@@ -8,8 +8,8 @@ import json
 from MELLE import MELLE
 
 set_seed(111)
-device = 'cuda:6'
-ckpt_path = 'librispeech_exp/melle_vad_flux_0.1_bce5/step_370000.pt'
+device = 'cuda:7'
+ckpt_path = 'librispeech_exp/melle/step_400000.pt'
 model = MELLE(
     using_rope=False,
     using_postnet=True,
@@ -20,12 +20,12 @@ model = MELLE(
     postnet_activation='tanh',
 ).to(device)
 # ============================== #
-vad_splitter = VADSplitter(
-            aggressiveness=3,
-            sample_rate=16000,
-            frame_duration=30
-        )
-# vad_splitter = None
+# vad_splitter = VADSplitter(
+#             aggressiveness=3,
+#             sample_rate=16000,
+#             frame_duration=30
+#         )
+vad_splitter = None
 # ============================== #
 
 def read_jsonl(jsonl_path):
@@ -71,6 +71,3 @@ for prompt_item, generate_item in zip(prompt_datas, generate_datas):
     np.save(os.path.join(prompt_save_dir, f'{prompt_key}.npy'), prompt_mel[0].cpu().numpy())
     np.save(os.path.join(generate_save_dir, f'{generate_key}.npy'), outputs[0].cpu().numpy())
     pbar.update(1)
-# os.system('cd /root/epfs/data/shy_data/MELLE/ParallelWaveGAN && CUDA_VISIBLE_DEVICES=0 python parallel_wavegan/bin/decode.py --checkpoint checkpoint/hifigan-libritts-1930000steps.pkl --scp /root/epfs/data/shy_data/MELLE/feats.scp --outdir /root/epfs/data/shy_data/2025/MELLE --normalize-before')
-# cd /root/epfs/data/shy_data/MELLE/ParallelWaveGAN && 
-# CUDA_VISIBLE_DEVICES=0 python parallel_wavegan/bin/decode.py --checkpoint checkpoint/hifigan-libritts-1930000steps.pkl --scp /root/epfs/data/shy_data/2025/MELLE/output.scp --outdir /root/epfs/data/shy_data/2025/MELLE/librispeech_exp/melle_vad_flux_0.1_bce20/step_400000testclean_prompt_samples --normalize-before
