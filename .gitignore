@@ -5,3 +5,5 @@ wavlm_large_finetune.pth
 output.scp
 librispeech_exp/melle/step_400000.pt
 __pycache__
+.DS_Store
+.vscode
