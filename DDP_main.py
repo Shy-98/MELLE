@@ -39,8 +39,6 @@ def main():
     parser.add_argument("--postnet_activation", type=str, default='tanh', choices=['silu','relu','tanh'])
     parser.add_argument("--exp_name", type=str, default='melle')
     parser.add_argument("--using_vad", action='store_true')
-    #CUDA_VISIBLE_DEVICES=0,1,2,3 torchrun --nnodes=1 --nproc_per_node=4 --master_port=12345 DDP_main.py --train_json data/librispeech_train960.jsonl --batch_frames 20000 --save_dir librispeech_exp --using_postnet --norm layer --transformer_activation relu --prenet_activation relu --postnet_activation tanh --exp_name  melle_vad_flux_0.1_bce5
-    #CUDA_VISIBLE_DEVICES=0,1,2,3 torchrun --nnodes=1 --nproc_per_node=4 --master_port=12345 DDP_main.py --train_json data/wenet4tts_emov2_zh.jsonl --batch_frames 50000 --save_dir wenet4tts_emov2_exp/
 
     args = parser.parse_args()
     args.save_dir = os.path.join(args.save_dir, args.exp_name)
