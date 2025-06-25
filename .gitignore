@@ -1,6 +1,6 @@
 features/
-librispeech_exp/
 hubert-large-ls960-ft/
 wavlm_large_finetune.pth
 *jsonl.rank
 output.scp
+librispeech_exp/melle/step_400000.pt

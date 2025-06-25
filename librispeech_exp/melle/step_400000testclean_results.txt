@@ -1,0 +1,4 @@
+all
+hubert wer: 5.69% | E / N: 1253 / 22015 | S: 595 | I: 159 | D: 499
+spk_sim_r: 0.5047 | spk_sim_o: 0.4890
+
