@@ -165,7 +165,6 @@ class MELLE(nn.Module):
         stop_logits = stop_logits.masked_select(stop_choice).view(-1)
         loss_bce = F.binary_cross_entropy_with_logits(stop_logits, stop_target, pos_weight=torch.tensor(100.0), reduction='sum')
 
-        # loss = loss_l1 + loss_l2 + 5e-2 * loss_logvar - 0.5 * spec_flux_for_loss + loss_bce
         loss = loss_l1 + loss_l2 + 5e-2 * loss_logvar - 1.0 * spec_flux_for_loss + loss_bce
 
         return loss, loss_l1, loss_l2, loss_logvar, loss_bce
@@ -249,8 +248,6 @@ class MELLE(nn.Module):
             else:
                 vae_decoder_outs, _, _ = self.mel_decoder(encoder_out)
             mel = torch.cat([mel, vae_decoder_outs], dim=1)
-            # if mel.shape[1] >= max_length: break
-            # if mel.shape[1]-orig_mel_length > 100 and (stop_logits[0][0] > 0. or mel.shape[1] >= max_length): break
             if (stop_logits[0][0] > 0. or mel.shape[1] >= max_length): break
 
         if self.using_postnet:
