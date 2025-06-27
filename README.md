@@ -1,19 +1,25 @@
 # MELLE: Autoregressive Speech Synthesis without Vector Quantization
 
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Static Badge](https://img.shields.io/badge/Paper-b31b1b)](https://arxiv.org/abs/2407.08551)
 [![Python](https://img.shields.io/badge/Python-3.10-green.svg)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.6.0-red.svg)](https://pytorch.org/)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-An **unofficial PyTorch implementation** of "[Autoregressive Speech Synthesis without Vector Quantization](https://arxiv.org/pdf/2407.08551?)" paper. This repository provides a complete pipeline for training and inference of the MELLE model.
+An **unofficial PyTorch implementation** of "[Autoregressive Speech   Synthesis without Vector Quantization](https://arxiv.org/abs/2407.08551)" paper. This repository provides a complete pipeline for training and inference of the MELLE model.
+
+<div align=center>
+  <img src="img.png" width=100%>
+</div>
+
+<br>
 
 As shown in `librispeech_exp/melle/step_400000testclean_results.txt`, we used the Llama tokenizer and trained for 400,000 steps on the LibriSpeech-960h training set. On the cross-sentence evaluation of the 3–10 second subset of LibriSpeech test-clean, the WER (Word Error Rate) was 5.69%, with `spk_sim_r`: 0.5047 and `spk_sim_o`: 0.4890. 
-
-**NOTE**: As suggested in the original paper, when training on a smaller dataset of LibriSpeech's size, utilizing a smaller vocabulary (such as phonemes) is anticipated to yield better results.
 
 Sample audios can be found in the `librispeech_exp/melle/step_400000testclean_generate_samples` folder.
 
 Vocoder link: [https://huggingface.co/mechanicalsea/speecht5-tts](https://huggingface.co/mechanicalsea/speecht5-tts)
 
+**NOTE**: As suggested in the original paper, when training on a smaller dataset of LibriSpeech's size, utilizing a smaller vocabulary (such as phonemes) is anticipated to yield better results.
 
 ## 🚀 Quick Start
 
@@ -148,10 +154,10 @@ We provide the results of the MELLE model on the LibriSpeech dataset and the res
 
 ## 📜 Citation
 
-If you use this implementation in your research, please cite the original paper:
+If you find this work inspiring or use our codebase in your research, please consider giving a star ⭐ and a citation:
 
 ```bibtex
-@article{meng2024autoregressive,
+@article{meng2024melle,
   title={Autoregressive speech synthesis without vector quantization},
   author={Meng, Lingwei and Zhou, Long and Liu, Shujie and Chen, Sanyuan and Han, Bing and Hu, Shujie and Liu, Yanqing and Li, Jinyu and Zhao, Sheng and Wu, Xixin and others},
   journal={arXiv preprint arXiv:2407.08551},
