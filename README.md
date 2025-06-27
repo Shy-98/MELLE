@@ -4,7 +4,13 @@
 [![Python](https://img.shields.io/badge/Python-3.10-green.svg)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.6.0-red.svg)](https://pytorch.org/)
 
-An **unofficial PyTorch implementation** of "[Autoregressive Speech Synthesis without Vector Quantization]([https://arxiv.org/abs/2209.12888](https://arxiv.org/pdf/2407.08551?))" paper. This repository provides a complete pipeline for training and inference of the MELLE model.
+An **unofficial PyTorch implementation** of "[Autoregressive Speech Synthesis without Vector Quantization](https://arxiv.org/pdf/2407.08551?)" paper. This repository provides a complete pipeline for training and inference of the MELLE model.
+
+As shown in `librispeech_exp/melle/step_400000testclean_results.txt`, we used the Llama tokenizer and trained for 400,000 steps on the LibriSpeech-960h training set. On the cross-sentence evaluation of the 3–10 second subset of LibriSpeech test-clean, the WER (Word Error Rate) was 5.69%, with `spk_sim_r`: 0.5047 and `spk_sim_o`: 0.4890. Based on our experience, when training on a dataset of LibriSpeech's scale, using a smaller vocabulary (e.g., phonemes) might yield better results. Sample audios can be found in the `librispeech_exp/melle/step_400000testclean_generate_samples` folder.
+
+Vocoder link: [https://huggingface.co/mechanicalsea/speecht5-tts](https://huggingface.co/mechanicalsea/speecht5-tts)
+
+
 ## 🚀 Quick Start
 
 ### Environment Setup
