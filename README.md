@@ -4,7 +4,7 @@
 [![Python](https://img.shields.io/badge/Python-3.10-green.svg)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.6.0-red.svg)](https://pytorch.org/)
 
-An **unofficial PyTorch implementation** of "[Autoregressive Speech Synthesis without Vector Quantization](https://arxiv.org/abs/2209.12888)" paper. This repository provides a complete pipeline for training and inference of the MELLE model.
+An **unofficial PyTorch implementation** of "[Autoregressive Speech Synthesis without Vector Quantization]([https://arxiv.org/abs/2209.12888](https://arxiv.org/pdf/2407.08551?))" paper. This repository provides a complete pipeline for training and inference of the MELLE model.
 ## 🚀 Quick Start
 
 ### Environment Setup
