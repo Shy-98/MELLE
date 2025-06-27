@@ -110,28 +110,6 @@ python infer_test_clean.py
 python infer_compute_metrics.py
 ```
 
-## 📁 File Structure
-
-```
-MELLE/
-├── MELLE.py                      # Main model implementation
-├── DDP_main.py                   # Distributed training script
-├── DDP_dataset.py                # Dataset and data loading utilities
-├── modules/
-│   ├── modules.py                # Core model components (PreNet, PostNet, etc.)
-│   ├── TransformerEncoderLayer.py # Transformer encoder implementation
-│   └── traing_utils.py           # Training utilities and helpers
-├── data/
-│   ├── librispeech_train960.jsonl      # Training data
-│   ├── librispeech_testclean_prompt.jsonl    # Test prompts
-│   └── librispeech_testclean_generate.jsonl  # Generation targets
-├── infer_one_sample.py           # Single sample inference
-├── infer_test_clean.py           # Batch inference on test set
-├── infer_compute_metrics.py      # Metrics computation
-├── set_env.sh                    # Setup environment script
-└── librispeech_exp/              # Experiment outputs and checkpoints
-```
-
 ## 🎯 Model Configurations
 
 ### Available Configurations
@@ -157,54 +135,6 @@ The model supports various architectural choices:
 
 ## 📊 Results
 We provide the results of the MELLE model on the LibriSpeech dataset and the results are stored in `librispeech_exp/melle/` directory.
-
-## 🔧 Advanced Usage
-
-### Custom Dataset
-
-To train on your own dataset:
-
-1. **Prepare JSONL file** with format:
-   ```json
-   {"transcription": "YOUR TEXT HERE", "audio_path": "/path/to/audio.wav"}
-   ```
-
-2. **Update training script**:
-   ```bash
-   python DDP_main.py --train_json your_data.jsonl [other_args]
-   ```
-
-### Model Checkpointing
-
-- Checkpoints saved every `--save_interval` steps
-- Resume training with `--resume checkpoint_path.pt`
-- Model state includes optimizer and scheduler states
-
-### Distributed Training
-
-The implementation supports multi-GPU training:
-
-```bash
-CUDA_VISIBLE_DEVICES=0,1,2,3 torchrun \
-    --nnodes=1 \
-    --nproc_per_node=4 \
-    --master_port=12345 \
-    DDP_main.py [args]
-```
-
-## 🐛 Troubleshooting
-
-### Common Issues
-
-1. **CUDA Out of Memory**: Reduce `--batch_frames` parameter
-2. **Training Instability**: Adjust learning rate or enable gradient clipping
-3. **Poor Quality**: Ensure proper data preprocessing and sufficient training steps
-
-### Memory Optimization
-
-- Use gradient checkpointing for large models
-- Adjust batch size based on available GPU memory
-- Enable mixed precision training (automatically handled)
 
 ## 📜 Citation
 
