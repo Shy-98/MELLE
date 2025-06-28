@@ -52,6 +52,7 @@ pip install transformers numpy tqdm jiwer webrtcvad librosa
 
 2. **Prepare Training Data**:
    - The training data should be in JSONL format with `transcription` and `audio_path` fields
+   - You can use `generate_train_jsonl.py` to generate the training data from LibriSpeech dataset.
    - Example data files are provided in `data/` directory:
      - `librispeech_train960.jsonl` - Training data (960 hours)
      - `librispeech_testclean_prompt.jsonl` - Test prompts
