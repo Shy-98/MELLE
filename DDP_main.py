@@ -16,6 +16,7 @@ def main():
     parser.add_argument("--train_json", type=str, default='data/librispeech_train960.jsonl')
     parser.add_argument("--batch_frames", type=int, default=2000)
     parser.add_argument("--data_buffer_size", type=int, default=1000)
+    parser.add_argument("--num_workers", type=int, default=8)
 
     parser.add_argument("--lr", type=float, default=5e-4)
     parser.add_argument("--epochs", type=int, default=100)
@@ -120,7 +121,7 @@ def main():
     train_loader = DataLoader(
         train_dataset,
         batch_size=None,
-        num_workers=1,
+        num_workers=args.num_workers,
         pin_memory=True,
         persistent_workers=False,
         
